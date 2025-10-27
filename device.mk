@@ -5,4 +5,4 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
-LOCAL_PATH := device/qualcomm/qssi
+LOCAL_PATH := device/oppo/PCGM00
