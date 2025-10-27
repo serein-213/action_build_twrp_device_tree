@@ -1,6 +1,5 @@
 #
-# Copyright (C) 2025 The Android Open Source Project
-# Copyright (C) 2025 SebaUbuntu's TWRP device tree generator
+# Copyright (C) 2023 The Android Open Source Project
 #
 # SPDX-License-Identifier: Apache-2.0
 #
@@ -9,17 +8,18 @@
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
-# Inherit some common Omni stuff.
-$(call inherit-product, vendor/omni/config/common.mk)
-
-# Inherit from qssi device
+# Inherit from device makefile
 $(call inherit-product, device/qualcomm/qssi/device.mk)
 
+# Inherit some common TWRP stuff.
+$(call inherit-product, vendor/omni/config/common.mk)
+
+# Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := qssi
-PRODUCT_NAME := omni_qssi
-PRODUCT_BRAND := qti
-PRODUCT_MODEL := qssi system image for arm64
-PRODUCT_MANUFACTURER := qualcomm
+PRODUCT_NAME := twrp_qssi
+PRODUCT_BRAND := Qualcomm
+PRODUCT_MODEL := qssi
+PRODUCT_MANUFACTURER := Qualcomm
 
 PRODUCT_GMS_CLIENTID_BASE := android-qualcomm
 
