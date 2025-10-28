@@ -117,7 +117,8 @@ TW_RECOVERY_ADDITIONAL_RELINK_FILES += \
     $(TARGET_COPY_OUT_VENDOR)/lib64/hw/android.hardware.gatekeeper@1.0-impl-qti.so:vendor/lib64/hw/android.hardware.gatekeeper@1.0-impl-qti.so \
     $(TARGET_COPY_OUT_VENDOR)/lib64/vendor.qti.hardware.cryptfshw@1.0.so:vendor/lib64/vendor.qti.hardware.cryptfshw@1.0.so \
     $(TARGET_COPY_OUT_VENDOR)/lib64/libcryptfshwcommon.so:vendor/lib64/libcryptfshwcommon.so \
-    $(TARGET_COPY_OUT_VENDOR)/lib64/libcryptfshwhidl.so:vendor/lib64/libcryptfshwhidl.so
+    $(TARGET_COPY_OUT_VENDOR)/lib64/libcryptfshwhidl.so:vendor/lib64/libcryptfshwhidl.so \
+    $(TARGET_COPY_OUT_VENDOR)/lib64/libcryptfshwhidl.so:vendor/lib64/libcryptfs_hw.so
 
 # TWRP Configuration
 TW_THEME := portrait_hdpi
