@@ -6,3 +6,8 @@
 #
 
 LOCAL_PATH := device/oppo/PCGM00
+
+# TWRP: include QCOM decryption helpers
+PRODUCT_PACKAGES += \
+    qcom_decrypt \
+    qcom_decrypt_fbe

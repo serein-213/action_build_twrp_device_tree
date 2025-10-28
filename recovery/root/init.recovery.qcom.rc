@@ -36,3 +36,6 @@ on property:ro.boot.usbcontroller=*
 on fs
     wait /dev/block/platform/soc/${ro.boot.bootdevice}
     symlink /dev/block/platform/soc/${ro.boot.bootdevice} /dev/block/bootdevice
+    mkdir /vendor 0755 root root
+    mount ext4 /dev/block/bootdevice/by-name/vendor /vendor ro barrier=1
+    wait /vendor/lib64/libQSEEComAPI.so

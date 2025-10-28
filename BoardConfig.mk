@@ -102,8 +102,22 @@ PLATFORM_VERSION := 16.1.0
 
 # Crypto
 TW_INCLUDE_CRYPTO := true
-TW_INCLUDE_FBE := true
+TW_INCLUDE_CRYPTO_FBE := true
 TW_INCLUDE_CRYPTO_FBE_METADATA_DECRYPT := true
+TW_USE_FSCRYPT_POLICY := 1
+BOARD_USES_QCOM_FBE_DECRYPTION := true
+TARGET_HW_DISK_ENCRYPTION := true
+TW_FORCE_KEYMASTER_VER := 4
+
+# Relink vendor crypto/keymaster libs into recovery
+TW_RECOVERY_ADDITIONAL_RELINK_FILES += \
+    $(TARGET_COPY_OUT_VENDOR)/lib64/libQSEEComAPI.so:vendor/lib64/libQSEEComAPI.so \
+    $(TARGET_COPY_OUT_VENDOR)/lib64/libqtikeymaster4.so:vendor/lib64/libqtikeymaster4.so \
+    $(TARGET_COPY_OUT_VENDOR)/lib64/hw/android.hardware.keymaster@3.0-impl-qti.so:vendor/lib64/hw/android.hardware.keymaster@3.0-impl-qti.so \
+    $(TARGET_COPY_OUT_VENDOR)/lib64/hw/android.hardware.gatekeeper@1.0-impl-qti.so:vendor/lib64/hw/android.hardware.gatekeeper@1.0-impl-qti.so \
+    $(TARGET_COPY_OUT_VENDOR)/lib64/vendor.qti.hardware.cryptfshw@1.0.so:vendor/lib64/vendor.qti.hardware.cryptfshw@1.0.so \
+    $(TARGET_COPY_OUT_VENDOR)/lib64/libcryptfshwcommon.so:vendor/lib64/libcryptfshwcommon.so \
+    $(TARGET_COPY_OUT_VENDOR)/lib64/libcryptfshwhidl.so:vendor/lib64/libcryptfshwhidl.so
 
 # TWRP Configuration
 TW_THEME := portrait_hdpi
