@@ -39,3 +39,7 @@ on fs
     mkdir /vendor 0755 root root
     mount ext4 /dev/block/bootdevice/by-name/vendor /vendor ro barrier=1
     wait /vendor/lib64/libQSEEComAPI.so
+
+on boot
+    # Clear bootloader recovery command to prevent boot loop
+    write /dev/block/bootdevice/by-name/misc ""
