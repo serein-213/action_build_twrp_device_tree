@@ -1,0 +1,47 @@
+on early-init
+    export LD_LIBRARY_PATH /vendor/lib64:/vendor/lib
+
+on fs
+    # 等待关键二进制与库可用（vendor 在 init.recovery.qcom.rc 中挂载）
+    wait /vendor/bin/qseecomd
+    wait /vendor/lib64/libQSEEComAPI.so
+    wait /vendor/bin/hw/android.hardware.keymaster@3.0-service-qti
+    wait /vendor/bin/hw/android.hardware.keymaster@4.0-service-qti
+    wait /vendor/bin/hw/android.hardware.gatekeeper@1.0-service-qti
+
+on post-fs
+    # 启动 QSEECom 与密钥相关 HAL
+    start vendor.qseecomd
+    start vendor.keymaster-3-0
+    start vendor.keymaster-4-0
+    start vendor.gatekeeper-1-0
+
+service vendor.qseecomd /vendor/bin/qseecomd
+    class main
+    user root
+    group root
+    seclabel u:r:recovery:s0
+    oneshot
+
+service vendor.keymaster-3-0 /vendor/bin/hw/android.hardware.keymaster@3.0-service-qti
+    class main
+    user system
+    group system drmrpc
+    seclabel u:r:recovery:s0
+    oneshot
+
+service vendor.keymaster-4-0 /vendor/bin/hw/android.hardware.keymaster@4.0-service-qti
+    class main
+    user system
+    group system drmrpc
+    seclabel u:r:recovery:s0
+    oneshot
+
+service vendor.gatekeeper-1-0 /vendor/bin/hw/android.hardware.gatekeeper@1.0-service-qti
+    class main
+    user system
+    group system
+    seclabel u:r:recovery:s0
+    oneshot
+
+
