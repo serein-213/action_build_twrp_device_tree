@@ -113,9 +113,9 @@ TW_EXTRA_LANGUAGES := true
 TW_INCLUDE_NTFS_3G := true
 TW_USE_TOOLBOX := true
 TW_INPUT_BLACKLIST := "hbtp_vm"
-TW_BRIGHTNESS_PATH := /sys/devices/platform/soc/ae00000.qcom,mdss_mdp/backlight/panel0-backlight/brightness
+TW_BRIGHTNESS_PATH := "/sys/class/backlight/panel0-backlight/brightness"
 TW_MAX_BRIGHTNESS := 1023
-TW_DEFAULT_BRIGHTNESS := 500
+TW_DEFAULT_BRIGHTNESS := 800
 TW_NO_SCREEN_BLANK := true
 TWRP_INCLUDE_LOGCAT := true
 TARGET_USES_LOGD := true
@@ -124,3 +124,7 @@ TW_EXCLUDE_TWRPAPP := true
 TW_HAS_EDL_MODE := true
 TW_OZIP_DECRYPT_KEY := 1c4c1ea3a12531ae491b21bb31613c11
 TW_SKIP_COMPATIBILITY_CHECK := true
+
+# For display
+TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
+TW_USE_DRM_HWC := true
